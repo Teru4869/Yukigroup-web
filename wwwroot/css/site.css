@@ -1,0 +1,104 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.btn-front 
+{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-front .btn 
+{
+    text-align: center;
+    padding: 10px 20px; /* ボタン内の余白 */
+    border: 2px solid #007bff; /* 枠線の色（青系） */
+    border-radius: 5px; /* 角を少し丸く */
+    background-color: #007bff; /* 背景色（青系） */
+    color: white; /* 文字色 */
+    font-size: 16px; /* 文字サイズ */
+    font-weight: bold; /* 文字を太く */
+    cursor: pointer; /* マウスカーソルをポインターに */
+    transition: all 0.3s ease; /* ホバー時のアニメーション */
+}
+
+.btn-front .btn:hover 
+{
+    background-color: white; /* ホバー時の背景色 */
+    color: #007bff; /* ホバー時の文字色 */
+    border-color: #007bff; /* ホバー時の枠線 */
+}
+
+.btn-container 
+{
+    display: flex; /* 子要素を横並びにする */
+    justify-content: flex-start; /* 親の中央に配置 */
+    gap: 10px; /* ボタン同士の間隔 */
+}
+
+.btn-container .btn 
+{
+    text-align: center; /* ボタン内の文字を中央寄せ */
+}
+
+.form-container
+{
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+    align-items: center;
+}
+
+.form-item
+{
+    display: flex; /* ラベルと入力を横並び */
+    flex-direction: column; /* 縦にしたい場合は column に */
+    min-width: 120px; /* 幅を揃える */
+}
+
+.form-container input,
+.form-container select,
+.form-container button {
+    height: 38px; /* 入力欄と同じ高さにする（Bootstrapなら38pxが多い） */
+    padding: 6px 12px; /* ボタン内の文字の余白 */
+    box-sizing: border-box;
+}
+
+body 
+{
+  margin-bottom: 60px;
+}
+
+mb10
+{
+    margin-bottom: 10px;
+}
+mb15 
+{
+    margin-bottom: 15px;
+}
+
+mb20 
+{
+    margin-bottom: 20px;
+}
+
+mb30 {
+    margin-bottom: 30px;
+}

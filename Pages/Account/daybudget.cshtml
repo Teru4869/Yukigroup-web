@@ -1,0 +1,89 @@
+﻿@page
+@model Yukigroup_WEB.Pages.Account.daybudgetModel
+@{
+    ViewData["Title"] = "日計表 (daybudget)";
+}
+
+<h2>日計表</h2>
+
+<form method="post" class="form-container">
+    <div class="form-item">
+        <label>日付</label>
+        <input type="date" asp-for="InputDate" required />
+    </div>
+    <div class="form-item">
+        <label>会場</label>
+        <select asp-for="InputPlace" required>
+            <option value="">選択してください</option>
+            <option value="WeBase博多">Webase博多</option>
+            <option value="como es imaizumi">como es Imaizumi</option>
+            <option value="THE LIVELY 福岡博多">THE LIVELY 福岡博多</option>
+        </select>
+    </div>
+    <div class="form-item">
+        <label>開始のレジ金</label>
+        <input type="number" asp-for="StartCash" />
+    </div>
+    <div class="form-item">
+        <label>終了時のレジ金</label>
+        <input type="number" asp-for="EndCash" />
+    </div>
+    <div class="form-item">
+        <label>割引チケット</label>
+        <input type="number" asp-for="DiscountTicket" />
+    </div>
+    <div class="form-item">
+        <label>その日の売上</label>
+        <input type="number" asp-for="DailySales" />
+    </div>
+    <div class="form-item">
+        <label>会場費</label>
+        <input type="number" asp-for="VenueCost" />
+    </div>
+    <div class="form-item">
+        <label>諸経費</label>
+        <input type="number" asp-for="MiscCost" />
+    </div>
+    <div class="form-item">
+        <label>月売り上げ</label>
+        <input type="number" asp-for="MonthlySales" />
+    </div>
+    <div class="form-item">
+        <label>最終レジ金</label>
+        <input type="number" asp-for="FinalCash" />
+    </div>
+    <div class="form-item">
+        <label>来場者数</label>
+        <input type="number" asp-for="Visitors" />
+    </div>
+    <div class="form-item">
+        <label>備考</label>
+        <input type="text" asp-for="InputNote" />
+    </div>
+    <div>
+        <button type="submit">追加</button>
+    </div>
+</form>
+
+<hr />
+
+<table class="table table-bordered">
+    @if (Model.Rows != null)
+    {
+        foreach (var row in Model.Rows)
+        {
+            <tr>
+                @foreach (var cell in row)
+                {
+                    <td>@cell</td>
+                }
+            </tr>
+        }
+    }
+    else
+    {
+        <tr><td>データがありません。</td></tr>
+    }
+</table>
+
+<a asp-page="/Account/Index" class="btn btn-secondary mt-3">戻る</a>

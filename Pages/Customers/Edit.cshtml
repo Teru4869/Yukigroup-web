@@ -1,0 +1,65 @@
+﻿@page "{id}"
+@model Yukigroup_WEB.Pages.Customers.EditModel
+@{
+    ViewData["Title"] = "編集";
+}
+
+<h2>顧客情報の編集</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Customer.ID" class="control-label"></label>
+        <input asp-for="Customer.ID" class="form-control" readonly />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Name" class="control-label"></label>
+        <input asp-for="Customer.Name" class="form-control" />
+        <span asp-validation-for="Customer.Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Country" class="control-label"></label>
+        <input asp-for="Customer.Country" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.ParticipationCount" class="control-label"></label>
+        <select asp-for="Customer.ParticipationCount" class="form-control"
+                asp-items="Model.ParticipationOptions"></select>
+        <span asp-validation-for="Customer.ParticipationCount" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Status" class="control-label"></label>
+        <select asp-for="Customer.Status" class="form-control"
+                asp-items="Model.StatusOptions"></select>
+        <span asp-validation-for="Customer.Status" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Place" class="control-label"></label>
+        <select asp-for="Customer.Place" class="form-control"
+                asp-items="Model.PlaceOptions"></select>
+        <span asp-validation-for="Customer.Place" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.LanguageSkill" class="control-label"></label>
+        <select asp-for="Customer.LanguageSkill" class="form-control"
+                asp-items="Model.LanguageSkillOptions"></select>
+        <span asp-validation-for="Customer.LanguageSkill" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Customer.Note" class="control-label"></label>
+        <input asp-for="Customer.Note" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">保存</button>
+    <a asp-page="/Customers/Index" class="btn btn-secondary">キャンセル</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

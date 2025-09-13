@@ -1,0 +1,26 @@
+﻿@page "{id}"
+@model Yukigroup_WEB.Pages.Customers.DeleteModel
+@{
+    ViewData["Title"] = "削除";
+}
+
+<h2>顧客情報の削除</h2>
+
+<p>以下のデータを削除してもよろしいですか？</p>
+
+<div>
+    <strong>ID:</strong> @Model.Customer.ID <br />
+    <strong>名前:</strong> @Model.Customer.Name <br />
+    <strong>国:</strong> @Model.Customer.Country <br />
+    <strong>参加回数:</strong> @Model.Customer.ParticipationCount <br />
+    <strong>ステータス:</strong> @Model.Customer.Status <br />
+    <strong>場所:</strong> @Model.Customer.Place <br />
+    <strong>語学スキル:</strong> @Model.Customer.LanguageSkill <br />
+    <strong>備考:</strong> @Model.Customer.Note <br />
+</div>
+
+<form method="post">
+    <input type="hidden" asp-for="Customer.ID" />
+    <button type="submit">削除する</button>
+    <a asp-page="/Customers">キャンセル</a>
+</form>

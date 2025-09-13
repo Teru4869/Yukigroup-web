@@ -1,0 +1,93 @@
+﻿@page
+@model Yukigroup_WEB.Pages.Account.endbudgetModel
+@{
+    ViewData["Title"] = "レジ金終了時 (endbudget)";
+}
+
+<h2>レジ金終了時</h2>
+
+<form method="post" class="form-container">
+    <div class="form-item">
+        <label>日付</label>
+        <input type="date" asp-for="EndDate" required />
+    </div>
+    <div class="form-item">
+        <label>確認者</label>
+        <select asp-for="EndConfimer" required>
+            <option value="">選択してください</option>
+            <option value="Yuki">Yuki</option>
+            <option value="Subaru">Subaru</option>
+            <option value="Kasumi">Kasumi</option>
+            <option value="Subaru">Subaru</option>
+            <option value="Naoya">Naoya</option>
+            <option value="Teru">Teru</option>
+            <option value="Hinako">Hinako</option>
+        </select>
+    </div>
+    <div class="form-item">
+        <label>1万円札</label>
+        <input type="number" asp-for="EndItimanen" />
+    </div>
+    <div class="form-item">
+        <label>5千円札</label>
+        <input type="number" asp-for="EndGosenen" />
+    </div>
+    <div class="form-item">
+        <label>2千円札</label>
+        <input type="number" asp-for="EndNisenen" />
+    </div>
+    <div class="form-item">
+        <label>千円札</label>
+        <input type="number" asp-for="EndSenen" />
+    </div>
+    <div class="form-item">
+        <label>500円硬貨</label>
+        <input type="number" asp-for="EndGohyakuen" />
+    </div>
+    <div class="form-item">
+        <label>100円硬貨</label>
+        <input type="number" asp-for="EndHyakuen" />
+    </div>
+    <div class="form-item">
+        <label>50円硬貨</label>
+        <input type="number" asp-for="EndGozyuen" />
+    </div>
+    <div class="form-item">
+        <label>10円硬貨</label>
+        <input type="number" asp-for="EndZyuen" />
+    </div>
+    <div class="form-item">
+        <label>5円硬貨</label>
+        <input type="number" asp-for="EndGoen" />
+    </div>
+    <div class="form-item">
+        <label>1円硬貨</label>
+        <input type="text" asp-for="EndItien" />
+    </div>
+    <div>
+        <button type="submit">追加</button>
+    </div>
+</form>
+
+<hr />
+
+<table class="table table-bordered">
+    @if (Model.Rows != null)
+    {
+        foreach (var row in Model.Rows)
+        {
+            <tr>
+                @foreach (var cell in row)
+                {
+                    <td>@cell</td>
+                }
+            </tr>
+        }
+    }
+    else
+    {
+        <tr><td>データがありません。</td></tr>
+    }
+</table>
+
+<a asp-page="/Account/Index" class="btn btn-secondary mt-3">戻る</a>

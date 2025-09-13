@@ -1,0 +1,8 @@
+﻿services:
+  - type: web
+    name: yukigroup-web
+    runtime: docker
+    repo: https://github.com/Teru4869/Yukigroup-web
+    branch: main
+    plan: free
+    autoDeploy: true

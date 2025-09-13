@@ -1,0 +1,72 @@
+﻿@page
+@model Yukigroup_WEB.Pages.CustomersModel
+@{
+    ViewData["Title"] = "顧客一覧";
+}
+
+<h1>顧客一覧</h1>
+
+<p>参加者検索</p>
+<form method="get">
+    <input type="text" name="searchTerm" value="@Request.Query["searchTerm"]" placeholder="名前で検索" />
+    <button type="submit">検索</button>
+</form>
+<p>参加者新規追加</p>
+<form method="post">
+    <input type="text" name="Name" placeholder="名前" required />
+    <input type="text" name="Country" placeholder="出身国" required />
+    <select name="ParticipationCount">
+		<option value="1回">1回</option>
+		<option value="2回">2回</option>
+		<option value="3回">3回</option>
+		<option value="4回以上">4回以上</option>
+    </select>
+    <select name="Status">
+        <option value="学生">学生</option>
+        <option value="社会人">社会人</option>
+    </select>
+    <select name="Place">
+        <option value="WeBase">WeBase</option>
+        <option value="コモエス">コモエス</option>
+    </select>
+    <select name="LanguageSkill">
+        <option value="全く話せない">全く話せない</option>
+        <option value="少し話せる">少し話せる</option>
+        <option value="日常会話可能">日常会話可能</option>
+        <option value="流暢">流暢</option>
+    </select>
+    <input type="text" name="Note" placeholder="備考" required />
+    <button type="submit">シートに書き込む</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>名前</th>
+            <th>出身国</th>
+            <th>参加回数</th>
+            <th>学生/社会人</th>
+            <th>場所</th>
+            <th>日本語レベル</th>
+            <th>備考</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model.CustomerList)
+        {
+            <tr>
+                <td>@c.Name</td>
+                <td>@c.Country</td>
+                <td>@c.ParticipationCount</td>
+                <td>@c.Status</td>
+                <td>@c.Place</td>
+                <td>@c.LanguageSkill</td>
+                <td>@c.Note</td>
+                <td>
+                    <a asp-page="/Customers/Edit" asp-route-id="@c.ID">編集</a>
+                    <a asp-page="/Customers/Delete" asp-route-id="@c.ID">削除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
