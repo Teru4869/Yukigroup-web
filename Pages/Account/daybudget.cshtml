@@ -1,5 +1,5 @@
 ﻿@page
-@model Yukigroup_WEB.Pages.Account.daybudgetModel
+@model Yukigroup_WEB.Pages.Account.DayBudgetModel
 @{
     ViewData["Title"] = "日計表 (daybudget)";
 }
@@ -7,6 +7,8 @@
 <h2>日計表</h2>
 
 <form method="post" class="form-container">
+    <input type="hidden" asp-for="InputEditId" />
+
     <div class="form-item">
         <label>日付</label>
         <input type="date" asp-for="InputDate" required />
@@ -61,29 +63,71 @@
         <input type="text" asp-for="InputNote" />
     </div>
     <div>
-        <button type="submit">追加</button>
+        <button type="submit" asp-page-handler="Save">追加 / 更新</button>
     </div>
 </form>
 
 <hr />
 
 <table class="table table-bordered">
-    @if (Model.Rows != null)
-    {
-        foreach (var row in Model.Rows)
+    <thead>
+        <tr>
+            <th>日付</th>
+            <th>会場</th>
+            <th>開始のレジ金</th>
+            <th>終了時のレジ金</th>
+            <th>割引チケット</th>
+            <th>その日の売上</th>
+            <th>会場費</th>
+            <th>諸経費</th>
+            <th>月売り上げ</th>
+            <th>最終レジ金</th>
+            <th>来場者数</th>
+            <th>備考</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Rows != null && Model.Rows.Count > 0)
         {
-            <tr>
-                @foreach (var cell in row)
-                {
-                    <td>@cell</td>
-                }
-            </tr>
+            foreach (var row in Model.Rows)
+            {
+                <tr>
+                    @* A列(ID)は非表示 *@
+                    <td>@row.ElementAtOrDefault(1)</td> @* 日付 *@
+                    <td>@row.ElementAtOrDefault(2)</td> @* 会場 *@
+                    <td>@row.ElementAtOrDefault(3)</td> @* 開始のレジ金 *@
+                    <td>@row.ElementAtOrDefault(4)</td> @* 終了時のレジ金 *@
+                    <td>@row.ElementAtOrDefault(5)</td> @* 割引チケット *@
+                    <td>@row.ElementAtOrDefault(6)</td> @* その日の売上 *@
+                    <td>@row.ElementAtOrDefault(7)</td> @* 会場費 *@
+                    <td>@row.ElementAtOrDefault(8)</td> @* 諸経費 *@
+                    <td>@row.ElementAtOrDefault(9)</td> @* 月売り上げ *@
+                    <td>@row.ElementAtOrDefault(10)</td> @* 最終レジ金 *@
+                    <td>@row.ElementAtOrDefault(11)</td> @* 来場者数 *@
+                    <td>@row.ElementAtOrDefault(12)</td> @* 備考 *@
+
+                    @* ✅ 操作列を独立させる *@
+                    <td>
+                        <div class="btn-inline-container">
+                            <form method="post" asp-page-handler="Edit" asp-route-id="@row[0]">
+                                <button type="submit">編集</button>
+                            </form>
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@row[0]"
+                                  onsubmit="return confirm('削除してよろしいですか？');">
+                                <button type="submit">削除</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
         }
-    }
-    else
-    {
-        <tr><td>データがありません。</td></tr>
-    }
+        else
+        {
+            <tr><td colspan="13">データがありません。</td></tr>
+        }
+    </tbody>
 </table>
+
 
 <a asp-page="/Account/Index" class="btn btn-secondary mt-3">戻る</a>

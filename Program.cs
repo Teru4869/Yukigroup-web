@@ -1,5 +1,6 @@
 using Yukigroup_WEB.Services;
 
+Console.WriteLine("=== Program.cs äJén ===");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<AccountingSheetService>();
 
@@ -7,6 +8,7 @@ builder.Services.AddScoped<AccountingSheetService>();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
+Console.WriteLine("=== builder.Build() äÆóπ ===");
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -25,4 +27,7 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+Console.WriteLine("=== app.Run() é¿çs ===");
 app.Run();
+
+builder.Logging.AddConsole();

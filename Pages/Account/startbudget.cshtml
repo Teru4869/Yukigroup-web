@@ -7,6 +7,8 @@
 <h2>レジ金開始時</h2>
 
 <form method="post" class="form-container">
+    <input type="hidden" asp-for="EditId" />
+
     <div class="form-item">
         <label>日付</label>
         <input type="date" asp-for="StartDate" required />
@@ -65,29 +67,62 @@
         <input type="text" asp-for="Itien" />
     </div>
     <div>
-        <button type="submit">追加</button>
+        <button type="submit" asp-page-handler="Save">追加 / 更新</button>
     </div>
 </form>
 
 <hr />
 
 <table class="table table-bordered">
-    @if (Model.Rows != null)
-    {
-        foreach (var row in Model.Rows)
+    <thead>
+        <tr>
+            <th>日付</th>
+            <th>確認者</th>
+            <th>1万円札</th>
+            <th>5千円札</th>
+            <th>二千円札</th>
+            <th>千円札</th>
+            <th>500円硬貨</th>
+            <th>100円硬貨</th>
+            <th>50円硬貨</th>
+            <th>10円硬貨</th>
+            <th>5円硬貨</th>
+            <th>1円硬貨</th>
+            <th>合計</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Rows != null && Model.Rows.Count > 0)
         {
-            <tr>
-                @foreach (var cell in row)
-                {
-                    <td>@cell</td>
-                }
-            </tr>
+            foreach (var row in Model.Rows)
+            {
+                <tr>
+                    @* A列(ID)を非表示にして残りの列だけ表示 *@
+                    @foreach (var cell in row.Skip(1))
+                    {
+                        <td>@cell</td>
+                    }
+
+                    <td>
+                        <div class="btn-inline-container">
+                            <form method="post" asp-page-handler="Edit" asp-route-id="@row[0]">
+                                <button type="submit">編集</button>
+                            </form>
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@row[0]"
+                                  onsubmit="return confirm('削除してよろしいですか？');">
+                                <button type="submit">削除</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            }
         }
-    }
-    else
-    {
-        <tr><td>データがありません。</td></tr>
-    }
+        else
+        {
+            <tr><td colspan="13">データがありません。</td></tr>
+        }
+    </tbody>
 </table>
 
 <a asp-page="/Account/Index" class="btn btn-secondary mt-3">戻る</a>

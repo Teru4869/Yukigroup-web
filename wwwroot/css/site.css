@@ -85,6 +85,28 @@ body
   margin-bottom: 60px;
 }
 
+/* ===== 編集・削除ボタン横並び用 ===== */
+.btn-inline-container 
+{
+    display: flex; /* 横並びにする */
+    gap: 5px; /* ボタンの間隔 */
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.btn-inline-container form 
+{
+    margin: 0; /* form の余白をなくす */
+}
+
+.btn-inline-container button 
+{
+    min-width: 60px; /* ボタンの最低幅（任意） */
+    padding: 3px 8px; /* ボタンの余白 */
+    cursor: pointer;
+}
+
+/* ===== マージン用 ===== */
 mb10
 {
     margin-bottom: 10px;
