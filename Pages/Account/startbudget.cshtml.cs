@@ -132,14 +132,14 @@ namespace Yukigroup_WEB.Pages.Account
 
             // --- 行データ構築 ---
             var newRow = new List<object>
-    {
-        id,
-        StartDate?.ToString("yyyy/MM/dd"),
-        StartConfimer,
-        itimanen, gosenen, nisenen, senen,
-        gohyakuen, hyakuen, gozyuen, zyuen, goen, itien,
-        total
-    };
+            {
+                id,
+                StartDate?.ToString("yyyy/MM/dd"),
+                StartConfimer,
+                itimanen, gosenen, nisenen, senen,
+                gohyakuen, hyakuen, gozyuen, zyuen, goen, itien,
+                total
+            };
             Console.WriteLine($"[OnPostSaveAsync] newRow 作成完了: {string.Join(", ", newRow)}");
 
             // --- Google Sheets 登録処理 ---

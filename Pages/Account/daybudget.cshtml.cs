@@ -143,21 +143,21 @@ namespace Yukigroup_WEB.Pages.Account
 
             // --- 新しい行データを構築 ---
             var newRow = new List<object>
-    {
-        id,
-        InputDate?.ToString("yyyy/MM/dd"),
-        InputPlace,
-        StartCash,
-        EndCash,
-        DiscountTicket,
-        DailySales,
-        VenueCost,
-        MiscCost,
-        MonthlySales,
-        FinalCash,
-        Visitors,
-        InputNote
-    };
+            {
+                id,
+                InputDate?.ToString("yyyy/MM/dd"),
+                InputPlace,
+                StartCash,
+                EndCash,
+                DiscountTicket,
+                DailySales,
+                VenueCost,
+                MiscCost,
+                MonthlySales,
+                FinalCash,
+                Visitors,
+                InputNote
+            };
             Console.WriteLine($"[OnPostSaveAsync] newRow 作成完了: {string.Join(", ", newRow)}");
 
             // --- Google Sheets 登録処理 ---

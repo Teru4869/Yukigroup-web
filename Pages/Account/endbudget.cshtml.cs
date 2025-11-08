@@ -160,22 +160,22 @@ namespace Yukigroup_WEB.Pages.Account
 
             // --- 行データ作成 ---
             var newRow = new List<object>
-    {
-        id,
-        EndDate?.ToString("yyyy/MM/dd"),
-        EndConfimer,
-        enditimanen,
-        endgosenen,
-        endnisenen,
-        endsenen,
-        endgohyakuen,
-        endhyakuen,
-        endgozyuen,
-        endzyuen,
-        endgoen,
-        enditien,
-        endtotal
-    };
+            {
+                id,
+                EndDate?.ToString("yyyy/MM/dd"),
+                EndConfimer,
+                enditimanen,
+                endgosenen,
+                endnisenen,
+                endsenen,
+                endgohyakuen,
+                endhyakuen,
+                endgozyuen,
+                endzyuen,
+                endgoen,
+                enditien,
+                endtotal
+            };
             Console.WriteLine($"[OnPostSaveAsync] newRow 作成完了: {string.Join(", ", newRow)}");
 
             // --- Google Sheets への登録処理 ---
